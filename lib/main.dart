@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:perplexity_clone/pages/home_pages.dart';
 import 'package:perplexity_clone/theme/colors.dart';
 
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: 'perplexity app',
       theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.background
+        scaffoldBackgroundColor: AppColors.background,
+        textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme, //indark mode flutter provide white color text
+      ),
       ),
       home: const HomePage (),
 

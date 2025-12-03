@@ -1,91 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:perplexity_clone/pages/widgets/sidebar_button.dart';
 import 'package:perplexity_clone/theme/colors.dart';
 
-
-class SideBar extends StatefulWidget{
+class SideBar extends StatefulWidget {
   const SideBar({super.key});
+
   @override
-  State<SideBar>createState()=>_SideBarState();
+  State<SideBar> createState() => _SideBarState();
 }
-class _SideBarState extends State<SideBar>{
-  bool isCollapsed=true;
+
+class _SideBarState extends State<SideBar> {
+  bool isCollapsed = true;
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 5000),
-      width: isCollapsed ? 64:128,
+      duration: const Duration(milliseconds: 350),
+      width: isCollapsed ? 64 : 150,
       color: AppColors.sideNav,
       child: Column(
-        crossAxisAlignment: isCollapsed ? CrossAxisAlignment.center:CrossAxisAlignment.start,
+        crossAxisAlignment:
+            isCollapsed ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         children: [
-        const SizedBox(height: 16,),
-        Icon(Icons.auto_awesome_mosaic,
-        color: AppColors.whiteColor,
-        size: 30,
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 14,horizontal: 10),
+          const SizedBox(height: 16),
 
-          child:Icon(Icons.add,
-        color: AppColors.iconGrey,
-        size: 22,
-        ), 
-        ),
-        
-        
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 14,horizontal: 10),
+          // TOP LOGO
+          Icon(
+            Icons.auto_awesome_mosaic,
+            color: AppColors.whiteColor,
+            size: 30,
+          ),
 
-          child: Icon(Icons.search,
-        color: AppColors.iconGrey,
-        size: 22,),),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 14),
+          const SizedBox(height: 20),
 
-          child:Icon(Icons.language,
-        color: AppColors.iconGrey,
-        size: 22,
-        ), 
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 14,horizontal: 10),
+          // MENU ITEMS - clean and correct
+          SideBarButton(
+              isCollapsed: isCollapsed, icon: Icons.home, text: "Home"),
+          SideBarButton(
+              isCollapsed: isCollapsed, icon: Icons.search, text: "Search"),
+          SideBarButton(
+              isCollapsed: isCollapsed, icon: Icons.language, text: "Language"),
+          SideBarButton(
+              isCollapsed: isCollapsed, icon: Icons.auto_awesome, text: "Discover"),
+          SideBarButton(
+              isCollapsed: isCollapsed, icon: Icons.cloud_outlined, text: "Library"),
 
-          child:Icon(Icons.auto_awesome,
-        color: AppColors.iconGrey,
-        size: 22,
-        ), 
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 14,horizontal: 10),
+          const Spacer(),
 
-          child:Icon(Icons.cloud_outlined,
-        color: AppColors.iconGrey,
-        size: 22,
-        ), 
-        ),
-        const Spacer(),
-        GestureDetector(
-         // margin: EdgeInsets.symmetric(vertical: 14),
-         onTap: () {
-          setState(() {
-            isCollapsed=!isCollapsed;
-            
-          });
-         },
+          // COLLAPSE/EXPAND BUTTON
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isCollapsed = !isCollapsed;
+              });
+            },
+            child: Icon(
+              isCollapsed
+                  ? Icons.keyboard_arrow_right
+                  : Icons.keyboard_arrow_left,
+              color: AppColors.iconGrey,
+              size: 22,
+            ),
+          ),
 
-          child:Icon(isCollapsed? Icons.keyboard_arrow_right:Icons.keyboard_arrow_left,
-        color: AppColors.iconGrey,
-        size: 22,
-        ), 
-        ),
-        const SizedBox(height: 16,),
-
-        
-      ],),
-
+          const SizedBox(height: 16),
+        ],
+      ),
     );
   }
-
 }
-
-  
