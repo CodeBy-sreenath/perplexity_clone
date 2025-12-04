@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:perplexity_clone/theme/colors.dart';
 
-class SearchSection extends StatelessWidget{
+class SearchSection  extends StatelessWidget {
   const SearchSection({super.key});
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('where knowledge begins'
-        ,style: GoogleFonts.ibmPlexMono(
+        Text("where knowledge begins",style: GoogleFonts.ibmPlexMono(
           fontSize: 40,
           fontWeight: FontWeight.w400,
           height: 1.2,
-        ),
 
-        
+        ),
         ),
         const SizedBox(height: 32,),
         Container(
@@ -26,25 +25,24 @@ class SearchSection extends StatelessWidget{
           ),
           child: Column(
             children: [
-              TextField(decoration:InputDecoration(
-                hintText: 'search anything...',
-                hintStyle: TextStyle(
-                  color: AppColors.textGrey,
-                  fontSize: 16,
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Ask me anything...",
+                  hintStyle: TextStyle(
+                    color: AppColors.textGrey,
+                    fontSize: 16,
+                  ),
+                  border: InputBorder.none,
                 ),
-                border: InputBorder.none
-
-              ) ,),
+              ),
               Row(
                 children: [
                   
                 ],
               )
 
-
             ],
           ),
-          
         )
 
       ],
